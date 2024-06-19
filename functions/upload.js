@@ -1,6 +1,6 @@
 export async function onRequestPost(context) {  // Contents of context object  
 
-   return 'fuck u';
+  
     
     const {   
         request, // same as existing Worker API    
