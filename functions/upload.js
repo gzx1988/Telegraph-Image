@@ -1,6 +1,6 @@
 export async function onRequestPost(context) {  // Contents of context object  
 
-  
+  return '{"error":"File too big: 6.03MBfff"}'
     
     const {   
         request, // same as existing Worker API    
