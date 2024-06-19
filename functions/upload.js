@@ -1,6 +1,6 @@
 export async function onRequestPost(context) {  // Contents of context object  
 
-        return new Response('Access Denied: Your IP is not whitelisted.', { status: 403 });
+   return 'fuck u';
     
     const {   
         request, // same as existing Worker API    
