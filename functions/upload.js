@@ -12,7 +12,7 @@ export async function onRequestPost(context) {  // Contents of context object
      } = context;
      context.request
      const url = new URL(request.url);
-    
+     console.log(url.searchParams.get('Authorization'));
 
     let authCode = request.headers.get('Authorization') || "auth_code"
     console.log('authCode',authCode)
