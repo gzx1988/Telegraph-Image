@@ -14,8 +14,12 @@ export async function onRequestPost(context) {  // Contents of context object
      const url = new URL(request.url);
     
 
-    let authCode = request.headers.get('auth_code') || "auth_code"
+    let authCode = request.headers.get('Authorization') || "auth_code"
     console.log('authCode',authCode)
+
+    if (authCode != env.BASIC_PASS) {
+        return new UnauthorizedException('auth error.')
+    }
     
 
      const response = fetch('https://telegra.ph/' + url.pathname + url.search, {
