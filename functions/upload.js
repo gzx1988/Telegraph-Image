@@ -16,7 +16,7 @@ export async function onRequestPost(context) {  // Contents of context object
     let Referer = request.headers.get('Referer') || "Referer"
     let refererUrl = new URL(Referer)
  
-    let refererCorde = refererUrl.searchParams.get('Authorization');
+    let refererCorde = refererUrl.searchParams.get('Authorization') || "auth_code"
 
     let authorization = request.headers.get('Authorization') || refererCorde
     console.log('Authorization',authorization)
