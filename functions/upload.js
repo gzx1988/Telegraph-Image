@@ -16,10 +16,10 @@ export async function onRequestPost(context) {  // Contents of context object
     let Referer = request.headers.get('Referer') || "Referer"
     let refererUrl = new URL(Referer)
  
-     console.log(refererUrl.searchParams.get('Authorization'));
+    let refererCorde = refererUrl.searchParams.get('Authorization');
 
-    let authCode = request.headers.get('Authorization') || "auth_code"
-    console.log('authCode',authCode)
+    let authorization = request.headers.get('Authorization') || refererCorde
+    console.log('Authorization',authorization)
 
     if (authCode != env.BASIC_PASS) {
         return new UnauthorizedException('auth error.')
