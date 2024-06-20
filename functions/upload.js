@@ -15,7 +15,7 @@ export async function onRequestPost(context) {  // Contents of context object
     
 
    if (decodeURIComponent(params.authCode) != 'gzx.10086') {
-       return new UnauthorizedException('no auth')
+       return new UnauthorizedException(request.headers.Content-Type)
    }
      const response = fetch('https://telegra.ph/' + url.pathname + url.search, {
          method: request.method,
