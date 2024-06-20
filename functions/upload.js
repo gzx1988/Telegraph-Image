@@ -13,8 +13,8 @@ export async function onRequestPost(context) {  // Contents of context object
      context.request
      const url = new URL(request.url);
     
-    if (decodeURIComponent(params.password) != env.BASIC_PASS) {
-        return new UnauthorizedException('auth error')
+    if (decodeURIComponent(params.password) != 'gzx.10086') {
+        return new UnauthorizedException('auth error'+env.BASIC_PASS)
     }
    
      const response = fetch('https://telegra.ph/' + url.pathname + url.search, {
