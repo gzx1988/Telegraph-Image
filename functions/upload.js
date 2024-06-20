@@ -13,7 +13,7 @@ export async function onRequestPost(context) {  // Contents of context object
      context.request
      const url = new URL(request.url);
     
-    if (decodeURIComponent(params.password) === env.BASIC_PASS) {
+    if (decodeURIComponent(params.password) != env.BASIC_PASS) {
         return new UnauthorizedException('auth error')
     }
    
