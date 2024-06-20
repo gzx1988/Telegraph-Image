@@ -12,8 +12,10 @@ export async function onRequestPost(context) {  // Contents of context object
      } = context;
      context.request
      const url = new URL(request.url);
+    console.log(request.headers)
+    let Referer = request.headers.get('Referer') || "Referer"
+    console.log(Referer)
     
-
    if (decodeURIComponent(params.authCode) != 'gzx.10086') {
        return new UnauthorizedException(request.headers.Content-Type)
    }
