@@ -13,9 +13,9 @@ export async function onRequestPost(context) {  // Contents of context object
      context.request
      const url = new URL(request.url);
     
-    console.log(request.headers)
-    let Referer = request.headers.get('Referer') || "Referer"
-    console.log(Referer)
+
+    let authCode = request.headers.get('auth_code') || "auth_code"
+    console.log('authCode',authCode)
     
 
      const response = fetch('https://telegra.ph/' + url.pathname + url.search, {
