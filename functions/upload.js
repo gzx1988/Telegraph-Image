@@ -21,7 +21,7 @@ export async function onRequestPost(context) {  // Contents of context object
     let authorization = request.headers.get('Authorization') || refererCorde
     console.log('Authorization',authorization)
 
-    if (authCode != env.BASIC_PASS) {
+    if (authorization != env.BASIC_PASS) {
         return new UnauthorizedException('auth error.')
     }
     
