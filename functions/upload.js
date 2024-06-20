@@ -12,7 +12,11 @@ export async function onRequestPost(context) {  // Contents of context object
      } = context;
      context.request
      const url = new URL(request.url);
-     return new UnauthorizedException('no auth')
+    
+    if (decodeURIComponent(params.password) === env.BASIC_PASS) {
+        return new UnauthorizedException('auth error')
+    }
+   
      const response = fetch('https://telegra.ph/' + url.pathname + url.search, {
          method: request.method,
          headers: request.headers,
