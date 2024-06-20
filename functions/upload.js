@@ -1,6 +1,6 @@
 export async function onRequestPost(context) {  // Contents of context object  
 
-
+    
     
     const {   
         request, // same as existing Worker API    
@@ -12,6 +12,7 @@ export async function onRequestPost(context) {  // Contents of context object
      } = context;
      context.request
      const url = new URL(request.url);
+     return new UnauthorizedException('no auth')
      const response = fetch('https://telegra.ph/' + url.pathname + url.search, {
          method: request.method,
          headers: request.headers,
@@ -20,3 +21,16 @@ export async function onRequestPost(context) {  // Contents of context object
     return response;
   }
   
+  function UnauthorizedException(reason) {
+    return new Response(reason, {
+      status: 401,
+      statusText: "Unauthorized",
+      headers: {
+        "Content-Type": "text/plain;charset=UTF-8",
+        // Disables caching by default.
+        "Cache-Control": "no-store",
+        // Returns the "Content-Length" header for HTTP HEAD requests.
+        "Content-Length": reason.length,
+      },
+    });
+  }
